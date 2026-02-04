@@ -167,4 +167,24 @@ function createHeart() {
 
 // create hearts continuously
 setInterval(createHeart, 400);
+function burstHearts(x, y) {
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.className = "burst-heart";
+    heart.innerHTML = "💖";
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 80 + Math.random() * 120;
+
+    heart.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    heart.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1200);
+  }
+}
 
