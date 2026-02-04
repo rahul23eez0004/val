@@ -1,3 +1,30 @@
+const NAMESPACE = "rahul-valentine-site"; // unique name (can change if you want)
+
+// VISITS
+fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/visits`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("visit-count").textContent = data.value;
+  });
+
+// YES clicks (just read initially)
+fetch(`https://api.countapi.xyz/get/${NAMESPACE}/yes`)
+  .then(res => res.json())
+  .then(data => {
+    if (data.value !== undefined)
+      document.getElementById("yes-count").textContent = data.value;
+  });
+
+// NO clicks (just read initially)
+fetch(`https://api.countapi.xyz/get/${NAMESPACE}/no`)
+  .then(res => res.json())
+  .then(data => {
+    if (data.value !== undefined)
+      document.getElementById("no-count").textContent = data.value;
+  });
+
+
+
 // Load counters
 let visits = localStorage.getItem("visits") || 0;
 let noClicks = localStorage.getItem("noClicks") || 0;
@@ -80,9 +107,12 @@ let size = 50;
 let clicks = 0;
 
 no_button.addEventListener('click', () => {
-      noClicks++;
-    localStorage.setItem("noClicks", noClicks);
-    document.getElementById("no-count").textContent = noClicks;
+     fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/no`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("no-count").textContent = data.value;
+  });
+
     // Change banner source
     let banner = document.getElementById('banner');
     if (clicks === 0) {
@@ -113,10 +143,11 @@ no_button.addEventListener('click', () => {
 });
 
 yes_button.addEventListener('click', () => {
-    yesClicks++;
-localStorage.setItem("yesClicks", yesClicks);
-document.getElementById("yes-count").textContent = yesClicks;
-
+fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/yes`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("yes-count").textContent = data.value;
+  });
     burstHearts(window.innerWidth / 2, window.innerHeight / 2);
     // change banner gif path
     let banner = document.getElementById('banner');
