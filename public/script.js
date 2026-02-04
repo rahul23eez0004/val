@@ -96,6 +96,7 @@ no_button.addEventListener('click', () => {
 });
 
 yes_button.addEventListener('click', () => {
+    burstHearts(window.innerWidth / 2, window.innerHeight / 2);
     // change banner gif path
     let banner = document.getElementById('banner');
     banner.src = "public/yes.gif";
