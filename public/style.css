@@ -147,3 +147,20 @@ body {
     opacity: 0;
   }
 }
+.burst-heart {
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
+  animation: burst 1.2s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
