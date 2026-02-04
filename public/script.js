@@ -1,4 +1,4 @@
-const NAMESPACE = "rahul-valentine-site"; // unique name (can change if you want)
+const NAMESPACE = "rahul-val-site"; // unique name (can change if you want)
 
 // VISITS
 fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/visits`)
