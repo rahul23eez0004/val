@@ -1,3 +1,17 @@
+// Load counters
+let visits = localStorage.getItem("visits") || 0;
+let noClicks = localStorage.getItem("noClicks") || 0;
+let yesClicks = localStorage.getItem("yesClicks") || 0;
+
+// Increase visit count
+visits++;
+localStorage.setItem("visits", visits);
+
+// Display
+document.getElementById("visit-count").textContent = visits;
+document.getElementById("no-count").textContent = noClicks;
+document.getElementById("yes-count").textContent = yesClicks;
+
 const answers_no = {
     english: [
         "No",
@@ -66,6 +80,9 @@ let size = 50;
 let clicks = 0;
 
 no_button.addEventListener('click', () => {
+      noClicks++;
+    localStorage.setItem("noClicks", noClicks);
+    document.getElementById("no-count").textContent = noClicks;
     // Change banner source
     let banner = document.getElementById('banner');
     if (clicks === 0) {
@@ -96,6 +113,10 @@ no_button.addEventListener('click', () => {
 });
 
 yes_button.addEventListener('click', () => {
+    yesClicks++;
+localStorage.setItem("yesClicks", yesClicks);
+document.getElementById("yes-count").textContent = yesClicks;
+
     burstHearts(window.innerWidth / 2, window.innerHeight / 2);
     // change banner gif path
     let banner = document.getElementById('banner');
