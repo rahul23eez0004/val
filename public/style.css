@@ -8,6 +8,15 @@ body {
     align-items: center;
     flex-direction: column;
 }
+.stats {
+  margin: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stats p {
+  margin: 5px;
+}
 
 .buttons {
     display: flex;
